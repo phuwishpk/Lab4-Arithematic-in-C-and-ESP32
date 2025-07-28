@@ -191,3 +191,41 @@ void app_main(void) {
     ESP_LOGI(TAG, "\n✅ เสร็จสิ้นการคำนวณทั้งหมด!");
     ESP_LOGI(TAG, "🎓 ได้เรียนรู้: คณิตศาสตร์ขั้นสูง, struct, #define, และฟังก์ชันคณิตศาสตร์");
 }
+
+void calculate_triangle(double base, double height) {
+    double area = 0.5 * base * height;
+
+    ESP_LOGI(TAG, "\n🎯 พื้นที่สามเหลี่ยม");
+    ESP_LOGI(TAG, "╔══════════════════════════════╗");
+    ESP_LOGI(TAG, "║ ฐาน: %.2f เมตร", base);
+    ESP_LOGI(TAG, "║ สูง: %.2f เมตร", height);
+    ESP_LOGI(TAG, "║ 📐 พื้นที่: ½ × %.2f × %.2f = %.2f ตร.ม.", base, height, area);
+    ESP_LOGI(TAG, "╚══════════════════════════════╝");
+}
+
+void calculate_cone(double radius, double height) {
+    double volume = (PI * radius * radius * height) / 3;
+    double slant = sqrt(radius * radius + height * height);
+    double surface_area = PI * radius * (radius + slant);
+
+    ESP_LOGI(TAG, "\n🔺 ปริมาตรทรงกรวย");
+    ESP_LOGI(TAG, "╔════════════════════════════════╗");
+    ESP_LOGI(TAG, "║ รัศมี: %.2f เมตร", radius);
+    ESP_LOGI(TAG, "║ ความสูง: %.2f เมตร", height);
+    ESP_LOGI(TAG, "║ 📐 พื้นที่ผิว: πr(r+√r²+h²) = %.2f ตร.ม.", surface_area);
+    ESP_LOGI(TAG, "║ 💧 ปริมาตร: (1/3)πr²h = %.2f ลบ.ม.", volume);
+    ESP_LOGI(TAG, "╚════════════════════════════════╝");
+}
+
+void convert_to_rai(double length, double width) {
+    double area_sqm = length * width;
+    double area_rai = area_sqm / SQUARE_METERS_TO_RAI;
+
+    ESP_LOGI(TAG, "\n🔁 แปลงหน่วย: เมตร → ตร.ม. → ไร่");
+    ESP_LOGI(TAG, "╔════════════════════════════════╗");
+    ESP_LOGI(TAG, "║ ความยาว: %.2f เมตร", length);
+    ESP_LOGI(TAG, "║ ความกว้าง: %.2f เมตร", width);
+    ESP_LOGI(TAG, "║ 📐 พื้นที่: %.2f ตร.ม.", area_sqm);
+    ESP_LOGI(TAG, "║ 🌾 เท่ากับ: %.4f ไร่", area_rai);
+    ESP_LOGI(TAG, "╚════════════════════════════════╝");
+}
